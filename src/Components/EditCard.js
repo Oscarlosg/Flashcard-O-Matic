@@ -4,6 +4,7 @@ import { readDeck } from "../utils/api";
 import { readCard } from "../utils/api";
 import { updateCard } from "../utils/api";
 import { FaHome } from "react-icons/fa";
+import CardForm from "./CardForm";
 
 const EditCard = () => {
   const history = useHistory();
@@ -50,45 +51,11 @@ const EditCard = () => {
       </div>
       <div className="container">
         <h2>Edit Card</h2>
-        <form onSubmit={onSubmitHandler}>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <label className="form-label mb-3">
-              Front
-              <textarea
-                className="form-control mt-2"
-                required
-                type="text"
-                name="front"
-                placeholder="Front side of card"
-                onChange={onChangeHandler}
-                value={editCard.front}
-              />
-            </label>
-            <label className="form-label mb-3">
-              Back
-              <textarea
-                className="form-control mt-2"
-                required
-                type="text"
-                name="back"
-                placeholder="Back side of card"
-                onChange={onChangeHandler}
-                value={editCard.back}
-              />
-            </label>
-          </div>
-          <div>
-            <button
-              className="btn btn-secondary mr-2"
-              onClick={() => history.push(`/decks/${currentId}`)}
-            >
-              cancel
-            </button>
-            <button className="btn btn-primary" type="submit" value="Submit">
-              Submit
-            </button>
-          </div>
-        </form>
+        <CardForm
+          onSubmitHandler={onSubmitHandler}
+          onChangeHandler={onChangeHandler}
+          state={editCard}
+        />
       </div>
     </>
   );

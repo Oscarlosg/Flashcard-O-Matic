@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { readDeck } from "../utils/api";
 import { createCard } from "../utils/api";
 import { FaHome } from "react-icons/fa";
+import CardForm from "./CardForm";
 
 const AddCard = () => {
-  const history = useHistory();
-
   const currentId = useParams().deckId;
 
   const initialFormState = { front: "", back: "" };
@@ -44,45 +43,11 @@ const AddCard = () => {
       </div>
       <div className="container">
         <h2>{pathName}: Add Card</h2>
-        <form onSubmit={onSubmitHandler}>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <label className="form-label mb-3">
-              Front
-              <textarea
-                required
-                type="text"
-                className="form-control mt-2"
-                name="front"
-                placeholder="Front side of card"
-                onChange={onChangeHandler}
-                value={newCardForm.front}
-              />
-            </label>
-            <label className="form-label mb-3">
-              Back
-              <textarea
-                required
-                type="text"
-                className="form-control mt-2"
-                name="back"
-                placeholder="Back side of card"
-                onChange={onChangeHandler}
-                value={newCardForm.back}
-              />
-            </label>
-          </div>
-          <div>
-            <button
-              className="btn btn-secondary mr-2"
-              onClick={() => history.push(`/decks/${currentId}`)}
-            >
-              cancel
-            </button>
-            <button className="btn btn-primary" type="submit" value="Submit">
-              Submit
-            </button>
-          </div>
-        </form>
+        <CardForm
+          onSubmitHandler={onSubmitHandler}
+          onChangeHandler={onChangeHandler}
+          state={newCardForm}
+        />
       </div>
     </>
   );
