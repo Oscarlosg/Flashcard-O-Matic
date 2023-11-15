@@ -12,7 +12,7 @@ A study tool that allows users to create and edit digital flashcards and sore th
 clone the repo into your machine, run npm i then npm start.  
   
 ### Screenshots
-![Main screenshot](Assets/flashcard-o-matic.png)
+![Main screenshot](assets/flashcard-o-matic.png)
 
 ## Built With
 
